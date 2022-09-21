@@ -1,0 +1,73 @@
+---
+title: ""
+format: 
+  html:
+    fig-width: 8
+    fig-height: 4
+    code-fold: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+![](Acute%20project%20logo.png){fig-align="center" width="400"}
+
+<br>
+
+**PI: Irene Zaghi, M.D.**
+
+**Supervisors: Prof Russell Lewis, Prof Vittrio Sambri, Prof.ssa Monica Cricca**
+
+<br>
+
+The ACUTE project (**A**dapting Blood**cu**lture systems **t**o monitor antimicrobial **e**fficacy) proposes to develop time-to positivity (Tpos)- a commonly measured variable in continuously monitored bloodculture systems in use by most clinical microbiology laboratories- as surrogate pharmacodynamic biomarker for monitoring antibiotic therapy.
+
+In this project, we propose to develop this assay as a "proof of concept" for monitoring ceftazidime-avibactam therapy of KPC-carbapenemase producing Klebsiella pneumoniae. (KPC-Kp) This will be accomplished through two specific aims and several workpackages.
+
+-   The first specific aim will establish the quantitative relationships between Tpos and several representative KPC-Kp strains in the absence and after exposure to a range of clinically-relevant exposures of ceftazidime-avibactam.
+-   The second specific aim will measure in 20 critically-ill patients receiving ceftazidime-avibactam treatment for KPC-KP bloodstream infections using KPC-Kp "indicator" strains or the patient's own isolate, and correlate Tpos results with blood concentration-time courses of ceftazidime and avibactam and PK/PD target attainment (free drug T\>MIC ) simulated for each patient using Bayesian estimates of individual PK parameters from population pharmacokinetic models and LC/MS/MS analysis of ceftazidime-avibactam in serum.
+
+This study will form the basis for the broader development and validation of Tpos as a surrogate pharmacodynamic biomarker for antimicrobial activity in serum, that could potentially be used for screening or monitoring antimicrobial efficacy in the critically-ill patients.
+
+## Workpackage 1
+
+IN the first workpackage, we will establish a quantitative relationship in vitro between Tpos and the number of viable *K. pneumoniae* alone, or following exposure to clinically-relevant sub-therapeutic and therapeutic exposures to ceftazidime-avibactam and other antibiotics. This will be acheived through 3 specific aims:
+
+-   **In Aim 1A** we will establish the quantitative relationship in vitro between Tpos and the number of viable KPC-Kp.
+
+Tubes containing 1.8 mL of pooled healthy human serum will be inoculated with 0.2 mL of a series of seven ten-fold dilutions (5x101 to 5x107 CFU/mL) of the standardised inoculum of each test indicator strains listed in Table 1. The inoculated sera are then transferred into BacT⁄ALERT bottles without inactivating matrix (Biomérieux Inc) for aerobic incubation and monitored for time to positivity. Tpos results will be used to establish preliminary assay quality control ranges and confirm the utility of isolates as selected "indicator" organisms and quality control ranges at specific inoculum thresholds. Experiments will be performed in at least 10 replicates. The main goal of this workpackage is to demonstrate that Tpos results under the assay conditions exhibit a reproducible and reliable relationship with bacterial inoculum for representative KPC-carbapenemase producing strains of Klebsiella pneumoniae.
+
+This link can be followed to find detailed [Standard Operating Procedues]() for the experiments.
+
+#### Figure 1. Relationship of *K. pneumoniae* inoculum vs. Tpos
+
+```{r}
+library (ggplot2)
+theme_set(theme_bw())
+wp1 <- read.csv("~/Desktop/ACUTE/wp1a.csv")
+fig1 <-ggplot(wp1, aes(x=inoculum, y=tpos, color=isolates, shape=diluent, fill=isolates)) + geom_point(size=4, alpha = 0.5) + 
+scale_x_log10 () +
+scale_y_continuous(name="Time to positivity (Tpos)", limits=c(4,12)) +
+geom_smooth(aes(linetype=diluent), method=lm , color="black", fill="#69b3a2", se=TRUE, inherit.aes = TRUE )
+fig1 + theme_bw(base_size = 16)
+
+```
+
+#### Figure 2. Relationship of ceftazidime concentrations vs. time to positivity
+
+```{r}
+# | code-fold: true
+library(drda)
+wp2 <- read.csv("~/Desktop/ACUTE/ec50_KPCB.csv")
+fit <- drda(tpos ~ conc, data=wp2, mean_function = "logistic4", max_iter = 1000)
+plot(fit, xlab = "log(conc)", ylab = "Tpos hrs")
+
+```
+
+```{r}
+summary (fit)
+naac (fit)
+
+```
