@@ -8,13 +8,13 @@ csl: nature.csl
 
 ## Test isolates
 
-| Isolate                                  | Enzyme       | Ceftazidime/Avibactam MIC (mg/L |
-|---------------------------|-------------------|---------------------------|
-| *Klebsiella pneumoniae* ESBL ATCC 700603 | *bla* SHV-18 | *MIC needed*                    |
-| *Klebsiella pneumoniae* KPC- A           | KPC-2        | 1                               |
-| *Klebsiella pneumoniae* KPC- B           | KPC-2        | 2                               |
-| *Klebsiella pneumoniae* NDM              | NDM-2        | \>256 (correct?)                |
-| *klebsiella pneumonia* VIM               | VIM          | \>256 (correct?)                |
+| Isolate                                  | Abbreviaiton | Enzyme       | Ceftazidime/Avibactam MIC (mg/L |
+|--------------------------|------------|-------------------|--------------------------|
+| *Klebsiella pneumoniae* ESBL ATCC 700603 | KP_ATCC      | *bla* SHV-18 | *MIC needed*                    |
+| *Klebsiella pneumoniae* KPC- A           | KP_KPCA      | KPC-2        | 1                               |
+| *Klebsiella pneumoniae* KPC- B           | KP_KPCB      | KPC-2        | 2                               |
+| *Klebsiella pneumoniae* NDM              | KP_NDM       | NDM-2        | \>256 (correct?)                |
+| *Klebsiella pneumonia* VIM               | KP_VIM       | VIM          | \>256 (correct?)                |
 
 ## Inoculum preparation
 

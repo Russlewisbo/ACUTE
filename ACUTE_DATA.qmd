@@ -39,7 +39,7 @@ IN the first workpackage, we will establish a quantitative relationship in vitro
 
 Tubes containing 1.8 mL of pooled healthy human serum will be inoculated with 0.2 mL of a series of seven ten-fold dilutions (5x101 to 5x107 CFU/mL) of the standardised inoculum of each test indicator strains listed in Table 1. The inoculated sera are then transferred into BacT⁄ALERT bottles without inactivating matrix (Biomérieux Inc) for aerobic incubation and monitored for time to positivity. Tpos results will be used to establish preliminary assay quality control ranges and confirm the utility of isolates as selected "indicator" organisms and quality control ranges at specific inoculum thresholds. Experiments will be performed in at least 10 replicates. The main goal of this workpackage is to demonstrate that Tpos results under the assay conditions exhibit a reproducible and reliable relationship with bacterial inoculum for representative KPC-carbapenemase producing strains of Klebsiella pneumoniae.
 
-This link can be followed to find detailed [Standard Operating Procedues]() for the experiments.
+This link can be followed to find detailed [Standard Operating Procedures](Workpackage1B_SOP.html) for the experiments.
 
 #### Figure 1. Relationship of *K. pneumoniae* inoculum vs. Tpos
 
