@@ -39,7 +39,7 @@ IN the first workpackage, we will establish a quantitative relationship in vitro
 
 Tubes containing 1.8 mL of pooled healthy human serum will be inoculated with 0.2 mL of a series of seven ten-fold dilutions (5x101 to 5x107 CFU/mL) of the standardised inoculum of each test indicator strains listed in Table 1. The inoculated sera are then transferred into BacT⁄ALERT bottles without inactivating matrix (Biomérieux Inc) for aerobic incubation and monitored for time to positivity. Tpos results will be used to establish preliminary assay quality control ranges and confirm the utility of isolates as selected "indicator" organisms and quality control ranges at specific inoculum thresholds. Experiments will be performed in at least 10 replicates. The main goal of this workpackage is to demonstrate that Tpos results under the assay conditions exhibit a reproducible and reliable relationship with bacterial inoculum for representative KPC-carbapenemase producing strains of Klebsiella pneumoniae.
 
-This link can be followed to find detailed [Standard Operating Procedures](Workpackage1B_SOP.html) for the experiments.
+This link can be followed to find detailed Standard Operating Procedures for the experiments.
 
 #### Figure 1. Relationship of *K. pneumoniae* inoculum vs. Tpos
 
@@ -55,7 +55,21 @@ fig1 + theme_bw(base_size = 16)
 
 ```
 
-#### Figure 2. Relationship of ceftazidime concentrations vs. time to positivity
+#### Figure 2. Relationship between Tpos and ceftazidime concentrations
+
+```{r}
+# | code-fold: true
+library (ggplot2)
+theme_set(theme_bw())
+ceftaz <- read.csv("~/Desktop/ACUTE/ceftazidime.csv")
+ggplot(ceftaz, aes(x=conc, y=tpos, shape=isolate)) + geom_point(size=4, alpha = 0.7)+ 
+scale_x_log10(name="Ceftazidime/Avibactam Concentration, mg/L") +
+scale_y_continuous(name="Time to positivity (Tpos)", limits=c(4,25)) 
+
+```
+
+
+#### Figure 3. Relationship of ceftazidime-avibactam concentrations vs. time to positivity for KP_KPC_B
 
 ```{r}
 # | code-fold: true
